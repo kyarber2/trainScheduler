@@ -53,8 +53,12 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey) {
   var trainTime = childSnapshot.val().time;
   var trainFrequency = childSnapshot.val().frequency;
 
+  var timeRemaining = moment().diff(moment.unix(trainTime), "minutes") % trainFrequency;
+  var tMinutesTillTrain = trainFrequency - timeRemaining;
 
-    var tFrequency = trainFrequency;
+  var nextTrain = moment().add(tMinutesTillTrain, "m").format("hh:mm A");
+
+    /*var tFrequency = trainFrequency;
     // Time is 3:30 AM
     var firstTime = trainTime;
     parseInt(firstTime);
@@ -66,16 +70,16 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey) {
     console.log("CURRENT TIME: " + moment(currentTime).format("hh:mm"));
     // Difference between the times
     var diffTime = moment().diff(moment(firstTimeConverted), "minutes");
-    console.log("DIFFERENCE IN TIME: " + moment(diffTime).format("minutes"));
+    console.log("DIFFERENCE IN TIME: " + moment(diffTime).format("m"));
     // Time apart (remainder)
     var tRemainder = diffTime % tFrequency;
-    console.log(tRemainder);
+    console.log("MINUTES TIL Train:" + tRemainder);
     // Minute Until Train
     var tMinutesTillTrain = tFrequency - tRemainder;
     console.log("MINUTES TILL TRAIN: " + tMinutesTillTrain);
     // Next Train
     var nextTrain = moment().add(tMinutesTillTrain, "minutes");
-    console.log("ARRIVAL TIME: " + moment(nextTrain).format("hh:mm"));
+    console.log("ARRIVAL TIME: " + moment(nextTrain).format("hh:mm"));*/
   
   // Train Info
   console.log(trainName);
@@ -86,9 +90,18 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey) {
   var trainTimeFormatted = moment.unix(trainTime).format("HH:mm");
   
   // Add each train's data into the table
-  $("#userInput > tbody").append("<tr><td><td>" + trainName + "</td><td>" + trainDestination + "</td><td>" 
-  + trainTimeFormatted + "</td></td>" + trainFrequency + "</td><td>" + nextTrain + "</td><td>" + tMinutesTillTrain + "</td><td></tr>"
-  );
+  $("#userInput > tbody")
+  .append("<tr>").data("id", childSnapshot.key) 
+  .append($("<td>").text(trainName))
+  .append($("<td>" + trainDestination + "</td>"))
+  //.append($("<td>" + trainTimeFormatted + "</td>"))
+  .append($("<td>" + trainFrequency + "</td>"))
+  .append($("<td>" + nextTrain + "</td>"))
+  .append($("<td>" + tMinutesTillTrain + "</td>"))
+  .append($("<td>"));
+    //append("<tr><td>" + trainName + "</td><td>" + trainDestination + "</td><td>" 
+  //+ trainTimeFormatted + "</td></\td>" + trainFrequency + "</td><td>" + nextTrain + "</td><td>" + tMinutesTillTrain + "</td><td></tr>"
+  //);
 });
 // Example Time Math
 // -----------------------------------------------------------------------------
