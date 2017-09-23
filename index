@@ -11,8 +11,7 @@
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
 	<script type="text/javascript" src="https://www.gstatic.com/firebasejs/4.3.1/firebase.js"></script>
-	<!-- <script type="text/javascript" src="assets/javascript/firebase config.js"</script> -->
-  
+	
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
 	
@@ -22,12 +21,12 @@
 <div class="container">
 	
 	<div id="headerDiv" class="jumbotron">
-		<h1>Train Schedules!</h1>
-		<p>Get Where You Need to Go</p>
+		<h1><span>Train Schedules!</span></h1>
+    <h3><span>Get Where You Need to Go</span></h3>
 	</div>
 
 
-	<div class="panel panel-primary col-lg-12">
+	<div class="panel panel-primary">
   		<div class="panel-heading">Current Train Schedule</div>
   			<table id="userInput" class="table">
     			<thead>
@@ -39,7 +38,7 @@
     					<th>Minutes Away</th>
     				</tr>
           </thead> 
-    			<tbody>
+    			<tbody id="newRows">
     				<!-- dynamically create table rows -->
     			</tbody>
     			
