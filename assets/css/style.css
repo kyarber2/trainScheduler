@@ -1,18 +1,27 @@
 #headerDiv{
 	background-image: url("../images/train2.jpg");
-	background-size: 100% 100%;
-	color: seashell;
+	background-size: cover;
+  background-position: center center;
+  width: 100%;
+  height: auto;
+  color: #DC3D24;
+  font-family: Tahoma, Geneva, sans-serif;
 	text-align:center;
 }
+
 #userInput{
 	text-indent: 20px;
 }
 #newRows{
 	text-indent: 40px;
 }
+
 span{
-	border-radius: 25px;
-	background-color: lightslategray;
+  border-width:5px;  
+  border-style:solid;
+
+	/*border-radius: 25px;*/
+	background-color: #232B2B;
 	padding: 20px;
 }
 

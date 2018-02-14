@@ -19,11 +19,11 @@
 
 <body>
 <div class="container">
-	
-	<div id="headerDiv" class="jumbotron">
-		<h1><span>Train Schedules!</span></h1>
-    <h3><span>Get Where You Need to Go</span></h3>
-	</div>
+	<div class="row">
+  	<div id="headerDiv" class="jumbotron">
+  		<h1><span>Train Schedules!</span></h1>
+      <h3><span>Get Where You Need to Go</span></h3>
+  	</div>
 
 	<div class="panel panel-primary">
   		<div class="panel-heading">Current Train Schedule</div>
